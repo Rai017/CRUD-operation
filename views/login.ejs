@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<%- include("partials/header", { title: "Login" }) %>
+
+<body class="h-full min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
+  <form action="/login" method="POST" class="bg-zinc-800 p-6 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+
+    <input type="email" name="email" placeholder="Email" required
+      class="w-full mb-4 px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none" />
+
+    <input type="password" name="password" placeholder="Password" required
+      class="w-full mb-6 px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none" />
+
+    <button type="submit"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded">Login</button>
+
+    <p class="text-center mt-4 text-sm">
+      Don't have an account?
+      <a href="/register" class="text-blue-400 underline">Register</a>
+    </p>
+  </form>
+
+<%- include("partials/footer") %>
+</body>
+</html>

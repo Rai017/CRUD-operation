@@ -1,0 +1,43 @@
+<%- include("partials/header", { title: "Your Expenses" }) %>
+
+<div class="min-h-screen bg-zinc-900 text-white py-12 px-4 flex flex-col items-center">
+  <h2 class="text-3xl font-bold mb-2">Your Expenses</h2>
+  <p class="text-lg mb-10">Total: ₹<%= total %></p>
+
+  <!-- Expense Form -->
+  <form action="/expenses/create" method="POST"
+    class="bg-zinc-800 p-6 rounded-lg shadow-lg w-full max-w-md flex flex-col gap-4 mb-10">
+
+    <input type="number" name="amount" placeholder="Amount" required
+      class="p-3 rounded bg-gray-700 text-white border border-gray-600" />
+
+    <input name="description" placeholder="Description"
+      class="p-3 rounded bg-gray-700 text-white border border-gray-600" />
+
+    <input name="category" placeholder="Category"
+      class="p-3 rounded bg-gray-700 text-white border border-gray-600" />
+
+    <button type="submit"
+      class="bg-green-600 hover:bg-green-700 text-white py-2 rounded font-semibold">
+      ➕ Add Expense
+    </button>
+  </form>
+
+  <!-- Expense List -->
+  <ul class="w-full max-w-md space-y-3">
+    <% expenses.forEach(e => { %>
+      <li class="bg-zinc-800 p-4 rounded flex justify-between items-center text-sm">
+        <span>₹<%= e.amount %> - <%= e.description %> [<%= e.category %>]</span>
+        <span>
+          <a href="/expenses/edit/<%= e._id %>" class="text-blue-400 hover:underline mr-3">✏️</a>
+          <a href="/expenses/delete/<%= e._id %>" class="text-red-400 hover:underline">❌</a>
+        </span>
+      </li>
+    <% }) %>
+  </ul>
+
+  <!-- Logout -->
+  <a href="/logout" class="mt-10 text-zinc-100 hover:underline font-semibold bg-red-800 p-4 rounded w-[10%] text-center">Logout</a>
+</div>
+
+<%- include("partials/footer") %>
